@@ -8,16 +8,20 @@ import Event from './components/Event/Event';
 import Schedule from './components/Schedule/Schedule';
 import Gallery from './components/Gallery/Gallery';
 import Gifts from './components/Gifts/Gifts';
+import DressCode from './components/DressCode/DressCode';
+import MusicPlayer from './components/MusicPlayer/MusicPlayer';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppContainer>
+        <MusicPlayer />
         <Hero />
         <Countdown />
         <Gallery />
         <Event />
+        <DressCode />
         <Schedule />
         <Gifts />
       </AppContainer>

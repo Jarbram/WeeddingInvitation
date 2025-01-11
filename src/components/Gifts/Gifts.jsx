@@ -25,13 +25,19 @@ const Gifts = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>Mesa de Regalos</SectionTitle>
-          
-          <MessageCard>
+          <SectionHeader>
+            <SectionTitle>Mesa de Regalos</SectionTitle>
+            <SectionSubtitle>Tu presencia es nuestro mejor regalo</SectionSubtitle>
+          </SectionHeader>
+
+          <MessageCard
+            as={motion.div}
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+          >
             <HeartIcon>💝</HeartIcon>
             <Message>
-              Tu presencia en nuestra boda es el regalo más valioso. Sin embargo, 
-              si deseas hacernos un presente, aquí te dejamos algunas opciones.
+              Si deseas hacernos un presente, aquí te dejamos algunas opciones que hemos preparado con mucho cariño.
             </Message>
           </MessageCard>
 
@@ -131,20 +137,44 @@ const ContentWrapper = styled.div`
   padding: 0 2rem;
 `;
 
-const SectionTitle = styled.h2`
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+const SectionHeader = styled.header`
   text-align: center;
-  margin-bottom: 3rem;
-  color: #1a1a1a;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  font-family: ${props => props.theme.fonts.secondary};
+  font-size: 2rem;
+  color: ${props => props.theme.colors.primary.dark};
+  margin-bottom: 0.5rem;
   
   &:after {
     content: '';
     display: block;
     width: 60px;
     height: 2px;
-    background-color: #d4b08c;
-    margin: 1rem auto;
+    background: ${props => props.theme.colors.primary.main};
+    margin: 0.5rem auto;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const SectionSubtitle = styled.p`
+  font-family: ${props => props.theme.fonts.primary};
+  font-size: 1rem;
+  color: ${props => props.theme.colors.sage[600]};
+  margin-top: 0.5rem;
+  font-weight: 300;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
   }
 `;
 
@@ -152,6 +182,10 @@ const MessageCard = styled.div`
   text-align: center;
   max-width: 700px;
   margin: 0 auto 3rem;
+  padding: 2rem;
+  background: ${props => props.theme.colors.sage[50]};
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 `;
 
 const HeartIcon = styled.div`
@@ -177,8 +211,15 @@ const GiftOption = styled.div`
   background: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border: 1px solid ${props => props.theme.colors.sage[100]};
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: ${props => props.theme.colors.primary.main};
+    transform: translateY(-5px);
+  }
 `;
 
 const GiftIcon = styled.div`
