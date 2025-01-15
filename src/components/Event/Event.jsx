@@ -16,30 +16,61 @@ const Event = () => {
           transition={{ duration: 0.6 }}
         >
           <SectionHeader>
-            <SectionTitle>Ceremonia & Celebración</SectionTitle>
-            <SectionSubtitle>Acompáñanos en este momento tan especial</SectionSubtitle>
+            <SectionTitle>La Celebración</SectionTitle>
+            <SectionSubtitle>Nos encantaría compartir este momento contigo</SectionSubtitle>
           </SectionHeader>
+
+          <BlessingSection>
+            <BlessingText>Con la bendición de nuestros padres</BlessingText>
+            <ParentsContainer>
+              <ParentGroup>
+                <ParentNames>
+                  <ParentName>Javier Cabezas Aragón</ParentName>
+                  <Separator>&</Separator>
+                  <ParentName>Maribel Gutiérrez Cabas</ParentName>
+                </ParentNames>
+                <ParentNames>
+                  <ParentName>Arsenio Huacchillo Garcia</ParentName>
+                  <Separator>&</Separator>
+                  <ParentName>Juana Violeta Castillo Espinoza</ParentName>
+                </ParentNames>
+              </ParentGroup>
+            </ParentsContainer>
+          </BlessingSection>
           
           <EventCard>
-            <TimeSection>
-              <DetailIcon>
-                <FaClock size={24} color="#d4b08c" />
-              </DetailIcon>
-              <TimeBlock>
-                17:00
-                <TimeLabel>Ceremonia & Recepción</TimeLabel>
-              </TimeBlock>
-            </TimeSection>
+            <EventDetails>
+              <DetailItem>
+                <IconWrapper>
+                  <FaCalendarCheck size={24} />
+                </IconWrapper>
+                <DetailContent>
+                  <DetailLabel>Fecha</DetailLabel>
+                  <DetailText>Sábado, 23 de Agosto 2025</DetailText>
+                </DetailContent>
+              </DetailItem>
 
-            <LocationSection>
-              <DetailIcon>
-                <FaMapMarkerAlt size={24} color="#d4b08c" />
-              </DetailIcon>
-              <LocationInfo>
-                <LocationName>Hotel Real</LocationName>
-                <LocationAddress>Calle Las Flores 456, Lima</LocationAddress>
-              </LocationInfo>
-            </LocationSection>
+              <DetailItem>
+                <IconWrapper>
+                  <FaClock size={24} />
+                </IconWrapper>
+                <DetailContent>
+                  <DetailLabel>Hora</DetailLabel>
+                  <DetailText>17:00 hrs</DetailText>
+                </DetailContent>
+              </DetailItem>
+
+              <DetailItem>
+                <IconWrapper>
+                  <FaMapMarkerAlt size={24} />
+                </IconWrapper>
+                <DetailContent>
+                  <DetailLabel>Lugar</DetailLabel>
+                  <DetailText>Hotel Real</DetailText>
+                  <DetailSubtext>Calle Las Flores 456, Lima</DetailSubtext>
+                </DetailContent>
+              </DetailItem>
+            </EventDetails>
 
             <ButtonsWrapper>
               <MapButton 
@@ -49,8 +80,7 @@ const Event = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <FaMapMarkerAlt size={16} />
-                Cómo llegar
+                Ver ubicación
               </MapButton>
 
               <ConfirmButton
@@ -59,7 +89,6 @@ const Event = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <FaCalendarCheck size={16} />
                 Confirmar asistencia
               </ConfirmButton>
             </ButtonsWrapper>
@@ -139,67 +168,155 @@ const Event = () => {
 };
 
 const EventContainer = styled.section`
-  padding: 4rem 0;
+  padding: 6rem 0;
+  background: ${props => props.theme.colors.background};
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem;
 `;
 
 const EventCard = styled.div`
   background: white;
+  border-radius: 20px;
   padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 `;
 
-const TimeSection = styled.div`
+const EventDetails = styled.div`
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+`;
+
+const DetailItem = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
-  margin-bottom: 2rem;
 `;
 
-const LocationSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-`;
-
-const DetailIcon = styled.span`
-  display: flex;
-  align-items: center;
-`;
-
-const TimeBlock = styled.div`
-  font-size: 2rem;
+const IconWrapper = styled.div`
   color: ${props => props.theme.colors.primary.main};
-  font-weight: 300;
+  background: ${props => props.theme.colors.primary.light};
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const TimeLabel = styled.div`
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 0.2rem;
-`;
-
-const LocationInfo = styled.div`
+const DetailContent = styled.div`
   flex: 1;
 `;
 
-const LocationName = styled.div`
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #1a1a1a;
+const DetailLabel = styled.div`
+  font-size: 0.9rem;
+  color: ${props => props.theme.colors.sage[600]};
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 `;
 
-const LocationAddress = styled.div`
+const DetailText = styled.div`
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  font-weight: 500;
+`;
+
+const DetailSubtext = styled.div`
   font-size: 0.9rem;
-  color: #666;
+  color: ${props => props.theme.colors.sage[600]};
   margin-top: 0.2rem;
+`;
+
+const SectionHeader = styled.header`
+  text-align: center;
+  margin-bottom: 4rem;
+`;
+
+const SectionTitle = styled.h2`
+  font-family: ${props => props.theme.fonts.secondary};
+  font-size: 3rem;
+  color: ${props => props.theme.colors.primary.dark};
+  margin-bottom: 1rem;
+  font-weight: 500;
+`;
+
+const SectionSubtitle = styled.p`
+  font-family: ${props => props.theme.fonts.primary};
+  font-size: 1rem;
+  color: ${props => props.theme.colors.sage[600]};
+  margin-top: 0.5rem;
+  font-weight: 300;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const BlessingSection = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+  position: relative;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: ${props => props.theme.colors.primary.main};
+  }
+  
+  &::before { top: 0; }
+  &::after { bottom: 0; }
+`;
+
+const BlessingText = styled.h2`
+  font-family: ${props => props.theme.fonts.secondary};
+  font-size: 1.5rem;
+  color: ${props => props.theme.colors.primary.dark};
+  margin-bottom: 2rem;
+  font-weight: 400;
+`;
+
+const ParentsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+`;
+
+const ParentGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const ParentName = styled.p`
+  font-family: ${props => props.theme.fonts.primary};
+  font-size: 1rem;
+  color: ${props => props.theme.colors.sage[600]};
+  margin: 0;
+`;
+
+const ParentNames = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Separator = styled.span`
+  font-size: 1rem;
+  color: ${props => props.theme.colors.sage[600]};
 `;
 
 const ButtonsWrapper = styled.div`
@@ -383,47 +500,6 @@ const SubmitButton = styled.button`
   
   &:hover {
     background: ${props => props.theme.colors.primary.dark};
-  }
-`;
-
-const SectionHeader = styled.header`
-  text-align: center;
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
-  }
-`;
-
-const SectionTitle = styled.h2`
-  font-family: ${props => props.theme.fonts.secondary};
-  font-size: 2rem;
-  color: ${props => props.theme.colors.primary.dark};
-  margin-bottom: 0.5rem;
-  
-  &:after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 2px;
-    background: ${props => props.theme.colors.primary.main};
-    margin: 0.5rem auto;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const SectionSubtitle = styled.p`
-  font-family: ${props => props.theme.fonts.primary};
-  font-size: 1rem;
-  color: ${props => props.theme.colors.sage[600]};
-  margin-top: 0.5rem;
-  font-weight: 300;
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
   }
 `;
 
