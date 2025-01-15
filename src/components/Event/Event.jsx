@@ -25,9 +25,9 @@ const Event = () => {
             <ParentsContainer>
               <ParentGroup>
                 <ParentNames>
-                  <ParentName>Javier Cabezas Aragón</ParentName>
+                  <ParentName>Carlos Jop Horna Rojas</ParentName>
                   <Separator>&</Separator>
-                  <ParentName>Maribel Gutiérrez Cabas</ParentName>
+                  <ParentName>Elena Aurora Pingo Nolasco</ParentName>
                 </ParentNames>
                 <ParentNames>
                   <ParentName>Arsenio Huacchillo Garcia</ParentName>
