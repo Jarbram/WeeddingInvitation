@@ -34,7 +34,7 @@ const PlayerContainer = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
-  background: ${({ theme }) => theme.colors.sage[50]};
+  background: ${({ theme }) => theme.colors.white};
   padding: 12px 24px;
   border-radius: 30px;
   display: flex;
@@ -42,7 +42,7 @@ const PlayerContainer = styled.div`
   gap: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  border: 1px solid ${({ theme }) => theme.colors.sage[100]};
+  border: 1px solid ${({ theme }) => theme.colors.sage.light};
   transition: all 0.3s ease;
   
   &:hover {
@@ -52,9 +52,9 @@ const PlayerContainer = styled.div`
 `;
 
 const PlayerButton = styled.button`
-  background: ${({ theme }) => theme.colors.primary.main};
+  background: ${({ theme }) => theme.colors.sage.main};
   border: none;
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
   font-size: 1.2rem;
   display: flex;
@@ -67,14 +67,14 @@ const PlayerButton = styled.button`
   transition: all 0.3s ease;
   
   &:hover {
-    background: ${({ theme }) => theme.colors.primary.dark};
+    background: ${({ theme }) => theme.colors.primary.main};
     transform: scale(1.05);
   }
 `;
 
 const PlayerText = styled.span`
   font-family: ${props => props.theme.fonts.primary};
-  color: ${({ theme }) => theme.colors.sage[600]};
+  color: ${({ theme }) => theme.colors.sage.main};
   font-size: 0.9rem;
   font-weight: 500;
 `;

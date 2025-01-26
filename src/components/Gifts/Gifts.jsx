@@ -127,8 +127,21 @@ const Gifts = () => {
 };
 
 const GiftsContainer = styled.section`
-  padding: 6rem 0;
-  background-color: #fff;
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  border-radius: 20px;
+  width: 95%;
+  max-width: 1400px;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    padding: 3rem 1rem;
+    margin: 1rem auto;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -148,8 +161,8 @@ const SectionHeader = styled.header`
 
 const SectionTitle = styled.h2`
   font-family: ${props => props.theme.fonts.secondary};
+  color: ${props => props.theme.colors.sage.main};
   font-size: 2rem;
-  color: ${props => props.theme.colors.primary.dark};
   margin-bottom: 0.5rem;
   
   &:after {
@@ -169,7 +182,7 @@ const SectionTitle = styled.h2`
 const SectionSubtitle = styled.p`
   font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  color: ${props => props.theme.colors.sage[600]};
+  color: ${props => props.theme.colors.primary.main};
   margin-top: 0.5rem;
   font-weight: 300;
 
@@ -194,9 +207,9 @@ const HeartIcon = styled.div`
 `;
 
 const Message = styled.p`
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${props => props.theme.fonts.primary};
   font-size: 1.1rem;
-  color: #666;
+  color: ${props => props.theme.colors.sage[700]};
   line-height: 1.6;
 `;
 
@@ -228,32 +241,34 @@ const GiftIcon = styled.div`
 `;
 
 const GiftTitle = styled.h3`
-  font-family: 'Playfair Display', serif;
+  font-family: ${props => props.theme.fonts.secondary};
   font-size: 1.5rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.sage[800]};
   margin-bottom: 1rem;
 `;
 
 const GiftDescription = styled.p`
-  font-family: 'Montserrat', sans-serif;
-  color: #666;
+  font-family: ${props => props.theme.fonts.primary};
+  color: ${props => props.theme.colors.sage[600]};
   margin-bottom: 1.5rem;
   line-height: 1.6;
 `;
 
 const Button = styled.button`
-  background-color: #d4b08c;
-  color: white;
+  background: ${props => props.theme.colors.sage.main};
+  color: ${props => props.theme.colors.white};
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: #c49b7c;
+    background: ${props => props.theme.colors.sage[600]};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(117, 135, 95, 0.2);
   }
 `;
 
@@ -261,17 +276,19 @@ const ShowDetailsButton = styled(Button)``;
 
 const LinkButton = styled.a`
   display: inline-block;
-  background-color: #d4b08c;
-  color: white;
+  background: ${props => props.theme.colors.sage.main};
+  color: ${props => props.theme.colors.white};
   text-decoration: none;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: #c49b7c;
+    background: ${props => props.theme.colors.sage[600]};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(117, 135, 95, 0.2);
   }
 `;
 
@@ -307,14 +324,14 @@ const BankRow = styled.div`
 `;
 
 const BankLabel = styled.span`
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${props => props.theme.fonts.primary};
   font-weight: 500;
-  color: #666;
+  color: ${props => props.theme.colors.sage[600]};
 `;
 
 const BankValue = styled.span`
-  font-family: 'Montserrat', sans-serif;
-  color: #1a1a1a;
+  font-family: ${props => props.theme.fonts.primary};
+  color: ${props => props.theme.colors.sage[800]};
   display: flex;
   align-items: center;
   gap: 0.5rem;

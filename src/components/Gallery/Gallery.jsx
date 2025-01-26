@@ -186,10 +186,17 @@ const Gallery = () => {
 
 const GalleryContainer = styled.section`
   padding: 4rem 0;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  border-radius: 20px;
+  width: 95%;
+  max-width: 1400px;
 
   @media (max-width: 768px) {
     padding: 2rem 0;
+    margin: 1rem auto;
   }
 `;
 
@@ -214,8 +221,8 @@ const SectionHeader = styled.header`
 
 const SectionTitle = styled.h2`
   font-family: ${props => props.theme.fonts.secondary};
+  color: ${props => props.theme.colors.sage.main};
   font-size: 2rem;
-  color: ${props => props.theme.colors.primary.dark};
   margin-bottom: 0.5rem;
   
   &:after {
@@ -235,8 +242,8 @@ const SectionTitle = styled.h2`
 const SectionSubtitle = styled.p`
   font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  color: ${props => props.theme.colors.sage[600]};
-  margin-top: 0.5rem;
+  color: ${props => props.theme.colors.primary.main};
+  margin-bottom: 2rem;
   font-weight: 300;
 
   @media (max-width: 768px) {
@@ -249,8 +256,8 @@ const SliderContainer = styled.div`
   width: 100%;
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  background: ${props => props.theme.colors.sage[50]};
+  box-shadow: 0 8px 30px rgba(117, 135, 95, 0.15);
+  background: ${props => props.theme.colors.sage.light};
   aspect-ratio: 16/9;
 
   @media (max-width: 768px) {
@@ -284,7 +291,7 @@ const SlideOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(117, 135, 95, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -306,7 +313,7 @@ const SliderButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   ${props => props.left ? 'left: 0.5rem;' : 'right: 0.5rem;'}
-  background: rgba(255, 255, 255, 0.8);
+  background: ${({ theme }) => theme.colors.white};
   border: none;
   border-radius: 50%;
   width: 2.5rem;
@@ -315,6 +322,12 @@ const SliderButton = styled.button`
   cursor: pointer;
   opacity: 0;
   transition: all 0.3s ease;
+  color: ${({ theme }) => theme.colors.sage.main};
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.sage.main};
+    color: ${({ theme }) => theme.colors.white};
+  }
 
   ${SliderContainer}:hover & {
     opacity: 1;
@@ -325,7 +338,7 @@ const SliderButton = styled.button`
     height: 2rem;
     font-size: 1.2rem;
     opacity: 1;
-    background: rgba(255, 255, 255, 0.9);
+    background: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -335,7 +348,7 @@ const ProgressBar = styled.div`
   left: 0;
   right: 0;
   height: 3px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(228, 198, 170, 0.3);
 `;
 
 const ProgressIndicator = styled.div`
@@ -406,7 +419,7 @@ const ModalControls = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: rgba(0, 0, 0, 0.7);
+  background: ${({ theme }) => theme.colors.sage.main};
   padding: 0.5rem 1rem;
   border-radius: 20px;
 `;
@@ -414,11 +427,15 @@ const ModalControls = styled.div`
 const ControlButton = styled.button`
   background: none;
   border: none;
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
   font-size: 1.5rem;
   padding: 0 0.5rem;
   opacity: ${props => props.disabled ? 0.5 : 1};
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  
+  &:hover:not(:disabled) {
+    color: ${({ theme }) => theme.colors.primary.light};
+  }
 `;
 
 const ImageCounter = styled.div`

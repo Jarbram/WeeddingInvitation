@@ -1,6 +1,8 @@
 export const theme = {
   colors: {
     sage: {
+      main: '#75875F',    // Verde principal
+      light: '#F2F2EA',   // Beige claro
       50: '#f8faf8',
       100: '#f1f4f1',
       200: '#e3e8e3',
@@ -13,15 +15,16 @@ export const theme = {
       900: '#2c332c',
     },
     primary: {
-      light: '#d4b08c',
-      main: '#b08968',
+      main: '#A98465',    // Marrón
+      light: '#E4C6AA',   // Rosa claro
       dark: '#8c6346'
     },
     secondary: {
       light: '#f5f5f5',
       main: '#e0e0e0',
       dark: '#cccccc'
-    }
+    },
+    white: '#FFFFFF'
   },
   fonts: {
     primary: "'Montserrat', sans-serif",

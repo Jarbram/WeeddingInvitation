@@ -105,10 +105,17 @@ const CountdownContainer = styled.section`
   padding: 4rem 1rem;
   position: relative;
   overflow: hidden;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  border-radius: 20px;
+  width: 95%;
+  max-width: 1400px;
 
   @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     padding: 3rem 1rem;
+    margin: 1rem auto;
   }
 `;
 
@@ -120,7 +127,7 @@ const ContentWrapper = styled.div`
 
 const CountdownTitle = styled.h2`
   font-family: ${props => props.theme.fonts.secondary};
-  color: ${props => props.theme.colors.primary.dark};
+  color: ${props => props.theme.colors.sage.main};
   font-size: 2rem;
   margin-bottom: 0.5rem;
   
@@ -141,7 +148,7 @@ const CountdownTitle = styled.h2`
 const CountdownSubtitle = styled.p`
   font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  color: ${props => props.theme.colors.sage[600]};
+  color: ${props => props.theme.colors.primary.main};
   margin-top: 0.5rem;
   margin-bottom: 2rem;
   font-weight: 300;
@@ -179,10 +186,10 @@ const TimeUnit = styled.div`
 `;
 
 const NumberWrapper = styled.div`
-  background: white;
+  background: ${({ theme }) => theme.colors.sage.light};
   padding: 1.5rem 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(212, 176, 140, 0.1);
+  box-shadow: 0 4px 20px rgba(117, 135, 95, 0.1);
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -198,7 +205,11 @@ const NumberWrapper = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, ${props => props.theme.colors.primary.light}, ${props => props.theme.colors.primary.main});
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.colors.sage.main},
+      ${props => props.theme.colors.primary.main}
+    );
     opacity: 0.5;
   }
 `;
@@ -206,8 +217,8 @@ const NumberWrapper = styled.div`
 const Number = styled.span`
   font-family: ${props => props.theme.fonts.primary};
   font-size: 3rem;
-  color: #1a1a1a;
-  font-weight: 300;
+  color: ${props => props.theme.colors.sage.main};
+  font-weight: 500;
   display: block;
   
   @media (max-width: ${props => props.theme.breakpoints.mobile}) {
@@ -218,7 +229,7 @@ const Number = styled.span`
 const Label = styled.span`
   font-family: ${props => props.theme.fonts.primary};
   font-size: 0.9rem;
-  color: #666;
+  color: ${props => props.theme.colors.primary.main};
   text-transform: uppercase;
   letter-spacing: 2px;
   
@@ -232,16 +243,16 @@ const AddToCalendarButton = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: white;
-  color: #1a1a1a;
+  background: ${({ theme }) => theme.colors.sage.main};
+  color: ${({ theme }) => theme.colors.white};
   padding: 1rem 2rem;
   border-radius: 50px;
   text-decoration: none;
   font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  border: 1px solid ${props => props.theme.colors.primary.main};
+  border: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(212, 176, 140, 0.1);
+  box-shadow: 0 4px 15px rgba(117, 135, 95, 0.2);
   
   @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     width: 100%;
@@ -251,8 +262,13 @@ const AddToCalendarButton = styled.a`
   }
   
   &:hover {
-    background: ${props => props.theme.colors.primary.main};
-    color: white;
+    background: ${({ theme }) => theme.colors.primary.main};
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(169, 132, 101, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 `;
 

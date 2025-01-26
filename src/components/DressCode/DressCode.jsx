@@ -56,7 +56,11 @@ const DressCode = () => {
                 <DressDetails>{dress.details}</DressDetails>
                 <ColorPalette>
                   {dress.colors.map((color, i) => (
-                    <ColorSwatch key={i} color={color} />
+                    <ColorSwatch 
+                      key={i} 
+                      color={color} 
+                      title="Color sugerido"
+                    />
                   ))}
                 </ColorPalette>
               </DressCard>
@@ -85,38 +89,22 @@ const DecorativeLine = styled.span`
 `;
 
 const DressCard = styled.div`
-  background: rgba(255, 255, 255, 0.98);
+  background: ${props => props.theme.colors.sage[50]};
   padding: 3rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
   text-align: center;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: 380px;
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(
-      to right,
-      ${props => props.theme.colors.primary.light},
-      ${props => props.theme.colors.primary.main}
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
   }
 `;
 
@@ -132,30 +120,33 @@ const IconWrapper = styled.div`
 `;
 
 const DressDetails = styled.p`
-  font-size: 0.9rem;
-  color: ${props => props.theme.colors.sage[500]};
+  font-size: 0.95rem;
+  color: ${props => props.theme.colors.sage[600]};
   font-style: italic;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 `;
 
 const ColorPalette = styled.div`
   display: flex;
   justify-content: center;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid ${props => props.theme.colors.sage[200]};
 `;
 
 const ColorSwatch = styled.div`
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background-color: ${props => props.color};
-  border: 2px solid white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid ${props => props.theme.colors.white};
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  cursor: help;
   
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
 `;
 
@@ -168,7 +159,13 @@ const NoteDivider = styled.div`
 
 const DressCodeContainer = styled.section`
   padding: 2rem 0;
-  background: linear-gradient(to bottom, #f9f9f9, #fff);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  border-radius: 20px;
+  width: 95%;
+  max-width: 1400px;
   position: relative;
 `;
 
@@ -189,8 +186,8 @@ const SectionHeader = styled.header`
 
 const SectionTitle = styled.h2`
   font-family: ${props => props.theme.fonts.secondary};
+  color: ${props => props.theme.colors.sage.main};
   font-size: 2rem;
-  color: ${props => props.theme.colors.primary.dark};
   margin-bottom: 0.5rem;
   
   &:after {
@@ -202,7 +199,7 @@ const SectionTitle = styled.h2`
     margin: 0.5rem auto;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     font-size: 1.5rem;
   }
 `;
@@ -210,11 +207,11 @@ const SectionTitle = styled.h2`
 const SectionSubtitle = styled.p`
   font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  color: ${props => props.theme.colors.sage[600]};
+  color: ${props => props.theme.colors.primary.main};
   margin-top: 0.5rem;
   font-weight: 300;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     font-size: 0.9rem;
   }
 `;

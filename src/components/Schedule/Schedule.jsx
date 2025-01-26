@@ -132,19 +132,15 @@ const Schedule = () => {
 
 const ScheduleContainer = styled.section`
   padding: 3rem 0;
-  background: linear-gradient(to bottom, #fff, #f9f9f9);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  border-radius: 20px;
+  width: 95%;
+  max-width: 1400px;
   position: relative;
   overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    background: linear-gradient(to bottom, rgba(212, 176, 140, 0.1), transparent);
-  }
 `;
 
 const ContentWrapper = styled.div`
@@ -155,7 +151,7 @@ const ContentWrapper = styled.div`
 
 const ScheduleTitle = styled.h2`
   font-family: ${props => props.theme.fonts.secondary};
-  color: ${props => props.theme.colors.primary.dark};
+  color: ${props => props.theme.colors.sage.main};
   font-size: 2rem;
   margin-bottom: 0.5rem;
   text-align: center;
@@ -177,7 +173,7 @@ const ScheduleTitle = styled.h2`
 const ScheduleSubtitle = styled.p`
   font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  color: ${props => props.theme.colors.sage[600]};
+  color: ${props => props.theme.colors.primary.main};
   margin-top: 0.5rem;
   margin-bottom: 2rem;
   font-weight: 300;
@@ -201,7 +197,7 @@ const Timeline = styled.div`
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background-color: #d4b08c;
+    background-color: ${props => props.theme.colors.sage[300]};
     
     @media (max-width: 768px) {
       left: 30px;
@@ -236,12 +232,12 @@ const TimelineItem = styled.div`
 const TimelineDot = styled.div`
   width: 40px;
   height: 40px;
-  background: linear-gradient(45deg, #d4b08c, #e2c4a6);
+  background: linear-gradient(45deg, ${props => props.theme.colors.sage.main}, ${props => props.theme.colors.sage[400]});
   border-radius: 50%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 0 0 4px rgba(212, 176, 140, 0.2);
+  box-shadow: 0 0 0 4px ${props => props.theme.colors.sage[100]};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,25 +287,25 @@ const TimelineContent = styled.div`
 `;
 
 const Time = styled.span`
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${props => props.theme.fonts.primary};
   font-size: 1.1rem;
-  color: #d4b08c;
+  color: ${props => props.theme.colors.sage[600]};
   font-weight: 500;
   display: block;
   margin-bottom: 0.5rem;
 `;
 
 const EventTitle = styled.h3`
-  font-family: 'Playfair Display', serif;
+  font-family: ${props => props.theme.fonts.secondary};
   font-size: 1.3rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.sage[800]};
   margin-bottom: 0.5rem;
 `;
 
 const EventDescription = styled.p`
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
-  color: #4a4a4a;
+  color: ${props => props.theme.colors.sage[700]};
   line-height: 1.5;
 `;
 
@@ -327,18 +323,18 @@ const ExpandButton = styled.button`
   gap: 0.5rem;
   margin: 2rem auto 0;
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(45deg, #d4b08c, #e2c4a6);
+  background: linear-gradient(45deg, ${props => props.theme.colors.sage.main}, ${props => props.theme.colors.sage[400]});
   border: none;
   border-radius: 25px;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
+  color: ${props => props.theme.colors.white};
+  font-family: ${props => props.theme.fonts.primary};
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(212, 176, 140, 0.3);
+  box-shadow: 0 4px 15px ${props => props.theme.colors.sage[200]};
 
   &:hover {
-    box-shadow: 0 6px 20px rgba(212, 176, 140, 0.4);
+    box-shadow: 0 6px 20px ${props => props.theme.colors.sage[300]};
   }
 
   svg {
